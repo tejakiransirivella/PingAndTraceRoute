@@ -10,7 +10,7 @@ Setup in Pycharm:
 -----------------
 1. Open Pycharm and navigate to the main page.
 2. Click on "Open" and import the unzipped project.
-3. Open Ping.java, which contains the main class.
+3. Open Ping.py, which contains the main class.
 4. Go to "Run" -> "Edit Configurations" -> Select Main class as ping.py or trace_route.py .
 5. In "Parameters", add the arguments
 6. Execute the program
