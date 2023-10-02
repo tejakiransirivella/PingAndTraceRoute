@@ -14,7 +14,7 @@ class TraceRoute:
         self.numeric = False
         self.summary = False
         self.dest_address = None
-        self.max_hops = 5
+        self.max_hops = 30
 
     def get_hostname_from_addr(self, addr):
         if self.numeric:
@@ -30,6 +30,17 @@ class TraceRoute:
         for i in range(1, arg_length):
             if sys.argv[i] == '-h':
                 i += 1
+                print("usage: trace_route.py [-h] [-n] [-q Q] [-S] destination\n")
+                print("positional arguments")
+                print(" destination target host address\n")
+
+                print("options:")
+                print("-h\thelp message")
+                print("-n\tnumerical hop address")
+                print("-q\tno of probes per ttl")
+                print("-S\tsummary of failed probes per hop")
+                sys.exit()
+
             elif i == arg_length - 1:
                 self.dest_address = sys.argv[i]
                 i += 2
@@ -79,6 +90,7 @@ class TraceRoute:
                     except socket.timeout:
                         output.append("*".ljust(5))
                         failed_probs += 1
+                        ip_addr = "Request timed out."
 
                     if i == self.no_probes - 1:
                         hostname_addr = self.get_hostname_from_addr(ip_addr)

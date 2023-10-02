@@ -21,6 +21,15 @@ class Ping:
         for i in range(1, arg_length):
             if sys.argv[i] == '-h':
                 i += 1
+                print("usage: ping.py [-h] [-s S] [-c C] [-i I] [-t T] destination\n\
+positional arguments:\n\
+    destination target host address\n\
+options:\n\
+    -h, --help show this help message and exit\n\
+    -s S packet size\n\
+    -c C number of times packets should be sent\n\
+    -i I wait time between successive pings\n\
+    -t T timeout in seconds after which program terminates\n")
             elif i == arg_length - 1:
                 self.dest_address = sys.argv[i]
                 i += 2
